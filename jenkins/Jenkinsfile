@@ -46,7 +46,7 @@ pipeline{
       steps{
         sh '''
           rm -rf node_modules
-          oc start-build angular-5-example-chained-s2i --from-dir=. --follow
+          oc start-build test-project-angular-example-pipeline --from-dir=. --follow
         '''
       }
     }
