@@ -39,12 +39,15 @@ pipeline{
     }
     stage ('build') {
       steps{
-        openshiftBuild(namespace: 'angular-5-example', bldCfg: 'angular-example-pipeline', showBuildLogs: 'true')
+        sh '$(npm bin)/ng build --prod --build-optimizer'
       }
     }
     stage ('build image') {
       steps{
-        openshiftDeploy(namespace: 'angular-5-example', depCfg: 'angular-5-example')
+        sh '''
+          rm -rf node_modules
+          oc start-build angular-example-pipeline --from-dir=. --follow
+        '''
       }
     }
   }
