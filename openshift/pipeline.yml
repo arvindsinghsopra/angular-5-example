@@ -14,4 +14,4 @@ spec:
               openshiftBuild(namespace: 'angular-5-example', bldCfg: 'angular-example-pipeline', showBuildLogs: 'true')
           stage 'Deployment using your-deploymentconfig'
               openshiftDeploy(namespace: 'angular-5-example', depCfg: 'angular-5-example')
-      jenkinsfilePath: jenkins/Jenkinsfile
+     
